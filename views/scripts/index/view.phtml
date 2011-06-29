@@ -1,0 +1,42 @@
+<div class="aright">
+    <?php echo $this->ajax('reply', 'message/index/form/id/'.$this->data->id, 2) ?>
+    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+</div>
+<p class="right"><?php echo $this->date($this->data->created, true)?></p>
+<div class="messages">
+    <div class="users" style="height: auto;">
+        <div class="item">
+            <img src="upload/<?php echo $this->thumbnail($this->data->image, 'small')?>" />
+            <span><?php echo $this->data->name?></span>
+        </div>
+        <div class="item arrow">
+            &rang;
+        </div>
+        <div class="item">
+            <img src="upload/<?php echo $this->thumbnail($this->data->rimage, 'small')?>" />
+            <span><?php echo $this->data->rname?></span>
+        </div>
+        <?php if ($this->data->total) :?>
+            <div class="item plus">
+                +
+            </div>
+            <div class="item">
+                <span><?php echo $this->data->total?></span>
+                <?php echo $this->translate(array('other','others', $this->data->total), $this->locale)?>
+            </div>
+        <?php endif;?>
+    </div>
+</div>
+<div class="separator">&nbsp;</div>
+<p><?php echo nl2br($this->data->description)?></p>
+<div class="aright">
+    <?php echo $this->ajax('reply', 'message/index/form/id/'.$this->data->id, 2) ?>
+    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+</div>
+<script type="text/javascript">
+    $('input[type=button], input[type=submit]').button();
+    $('.message-back').click(function(){
+        $('.message-view').hide();
+        $('.message-list').show();
+    });
+</script>

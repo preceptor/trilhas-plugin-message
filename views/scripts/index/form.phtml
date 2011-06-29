@@ -1,0 +1,53 @@
+<div class="right">
+    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+</div>
+<div class="messages">
+    <p><?php echo $this->translate('to')?></p>
+    <div class="users">
+        <?php foreach ($this->users as $user): ?>
+            <div class="item">
+                <img src="upload/<?php echo $this->thumbnail($user->image, 'small')?>" />
+                <input type="checkbox" name="users[]" value="<?php echo $user->id?>" /><br />
+                <?php echo $user->name?>
+            </div>
+        <?php endforeach;?>
+    </div>
+    <?php echo $this->form?>
+</div>
+<script type="text/javascript">
+	$(".messages form").submit(function() {
+        var $this = $(this),
+            users = $('.messages .users input').serialize();
+
+        if (!users) {
+            alert('<?php echo $this->translate('Select one user')?>');
+            return false;
+        }
+		$.post('message/index/save', $(this).serialize() + '&' + users, function(data){
+            $this.parents('.content').html(data);
+        });
+        return false;
+	});
+
+    <?php if ($this->user):?>
+        var users = eval('<?php echo $this->user?>');
+        $('.messages .users input').each(function(){
+            for (var i = 0; i < users.length; i++) {
+                if (this.value == users[i]) {
+                    this.checked = true;
+                }
+            }
+        });
+    <?php endif?>
+
+    $('input[type=button], input[type=submit]').button();
+    $('.message-back').click(function(){
+        if ($('.message-view').length) {
+            $('.message-view').hide();
+            $('.message-list').show();
+        } else {
+            $(this).parents('.content').load('message/index');
+        }
+    });
+</script>
+<?php echo $this->title($this->title, '.message-list')?>
