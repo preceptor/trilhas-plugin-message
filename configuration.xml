@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <name>message</name>
+    <description>Communication between student and teacher</description>
+    <author>Preceptor Educação a Distância</author>
+    <version>1.0</version>
+    <license>GPL 3</license>
+    <keywords>message, communication, comments</keywords>
+    <url>http://www.preceptoread.com.br</url>
+    
+    <files>
+        <sql>
+            <install>data/sql/install.sql</install>
+            <uninstall>data/sql/uninstall.sql</uninstall>
+        </sql>
+        <languages>
+            <language name="pt_BR">data/language/pt_BR/message.csv</language>
+        </languages>
+    </files>
+    
+    <!--
+    <configuration>
+        <item name="notepad_option">valor para gravar na tabela</item>
+    </configuration>
+    -->
+    
+    <menus>
+        <menu type="tri_classroom_menu">
+            <item group="support" resource="message/index/index">message</item>    
+        </menu>
+    </menus>
+    
+    <access>
+        <resource role="institution">message/index/index</resource>
+        <resource role="institution">message/index/sent</resource>
+        <resource role="institution">message/index/form</resource>
+        <resource role="institution">message/index/view</resource>
+        <resource role="institution">message/index/save</resource>
+        <resource role="institution">message/index/delete</resource>
+        <resource role="institution">message/index/send</resource>
+
+    </access>
+</configuration>
