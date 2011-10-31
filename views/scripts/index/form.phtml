@@ -1,5 +1,5 @@
 <div class="right">
-    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+    <input type="button" class="message-back btn" value="<?php echo $this->translate('back')?>" />
 </div>
 <div class="messages">
     <p><?php echo $this->translate('to')?></p>
@@ -40,7 +40,7 @@
         });
     <?php endif?>
 
-    $('input[type=button], input[type=submit]').button();
+    
     $('.message-back').click(function(){
         if ($('.message-view').length) {
             $('.message-view').hide();

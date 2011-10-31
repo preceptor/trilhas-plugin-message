@@ -52,11 +52,12 @@ class Message_Form_Message extends Zend_Form
                     ->addValidators($validators['description'])
                     ->addFilters($filters['description'])
                     ->setAttrib('rows', 10)
+                    ->setAttrib('class', 'xxlarge')
                     ->setAllowEmpty(false);
 
         $this->addElement($id)
              ->addElement($description)
              ->addElement($email)
-             ->addElement('submit', 'Save');
+             ->addElement('submit', 'Save', array('class' => 'btn primary'));
    }
 }

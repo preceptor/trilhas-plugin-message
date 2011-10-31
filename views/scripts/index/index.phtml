@@ -2,9 +2,8 @@
 <div class="message-list">
     <div class="left">
         <form id="formFindMessage" action="#">
-            <span class="ui-icon ui-icon-search magnifier"></span>
             <input type="text" name="query" style="width: 16em" />
-            <input type="submit" value="ok" /> &nbsp;&nbsp;&nbsp;
+            <input class="btn" type="submit" value="ok" /> &nbsp;&nbsp;&nbsp;
         </form>
     </div>
     <div class="aright">
@@ -13,7 +12,7 @@
         <?php else:?>
             <?php echo $this->ajax('Sent', 'message/index/sent', 2)?>
         <?php endif?>
-        <input type="button" class="message-new" value="<?php echo $this->translate('new')?>" />
+        <input type="button" class="message-new btn primary" value="<?php echo $this->translate('new')?>" />
     </div>
     <br />
     <?php if(count($this->data)):?>
@@ -51,7 +50,7 @@
     </table>
     <br />
     <div class="left">
-        <input type="button" id="message-delete" value="<?php echo $this->translate('delete')?>" />
+        <input class="btn" type="button" id="message-delete" value="<?php echo $this->translate('delete')?>" />
     </div>
     <div id="message-page">
         <?php echo $this->paginationControl($this->data) ?>
@@ -117,6 +116,6 @@
         return false;
 	});
 
-    $('input[type=button], input[type=submit]').button();
+    
 </script>
 <?php echo $this->title($this->title, '.message-list')?>

@@ -1,6 +1,6 @@
 <div class="aright">
     <?php echo $this->ajax('reply', 'message/index/form/id/'.$this->data->id, 2) ?>
-    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+    <input type="button" class="message-back btn" value="<?php echo $this->translate('back')?>" />
 </div>
 <p class="right"><?php echo $this->date($this->data->created, true)?></p>
 <div class="messages">
@@ -31,10 +31,10 @@
 <p><?php echo nl2br($this->data->description)?></p>
 <div class="aright">
     <?php echo $this->ajax('reply', 'message/index/form/id/'.$this->data->id, 2) ?>
-    <input type="button" class="message-back" value="<?php echo $this->translate('back')?>" />
+    <input type="button" class="message-back btn" value="<?php echo $this->translate('back')?>" />
 </div>
 <script type="text/javascript">
-    $('input[type=button], input[type=submit]').button();
+    
     $('.message-back').click(function(){
         $('.message-view').hide();
         $('.message-list').show();
