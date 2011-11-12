@@ -8,7 +8,26 @@ CREATE TABLE IF NOT EXISTS `message` (
   PRIMARY KEY (`id`),
   KEY `classroom_id` (`classroom_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+);
+
+CREATE TABLE IF NOT EXISTS `message_receiver` (
+  `message_id` bigint(20) NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `read` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`message_id`,`user_id`),
+  KEY `user_id` (`user_id`)
+);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `message_receiver`
+--
+ALTER TABLE `message_receiver`
+  ADD CONSTRAINT `message_receiver_ibfk_1` FOREIGN KEY (`message_id`) REFERENCES `message` (`id`),
+  ADD CONSTRAINT `message_receiver_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 ALTER TABLE `message`
   ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`classroom_id`) REFERENCES `classroom` (`id`),
